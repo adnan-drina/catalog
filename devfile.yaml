@@ -53,7 +53,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'mvn clean package -DskipTests -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
+        command: 'oc start-build catalog-springboot --from-file $CHE_PROJECTS_ROOT/coolstore-catalog/target/catalog-1.0.0-SNAPSHOT.jar --follow'
         component: quarkus-tools
   - name: Run Tests
     actions:
@@ -61,23 +61,11 @@ commands:
         type: exec
         command: 'mvn verify -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
         component: quarkus-tools
-  - name: Start Live Coding
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}'
-        type: exec
-        command: 'mvn clean compile quarkus:dev -Dquarkus.http.host=0.0.0.0 -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
-        component: quarkus-tools
   - name: Package App (JVM)
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'mvn package -DuberJar=true -DskipTests -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
-        component: quarkus-tools
-  - name: Package App (Native)
-    actions:
-      - workdir: '${CHE_PROJECTS_ROOT}'
-        type: exec
-        command: 'mvn package -Pnative -DskipTests -Dquarkus.package.uber-jar=false -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
+        command: 'mvn clean package -DskipTests -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
         component: quarkus-tools
   - name: Start Debugger on 5005
     actions:
