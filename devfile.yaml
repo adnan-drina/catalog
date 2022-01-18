@@ -1,12 +1,12 @@
 apiVersion: 1.0.0
 metadata:
-  name: coolstore-catalog
+  generateName: coolstore-catalog-
 attributes:
   persistVolumes: 'false'
 projects:
   - name: coolstore-catalog
     source:
-      location: 'https://github.com/adnan-drina/coolstore-catalog.git'
+      location: 'git@github.com:adnan-drina/coolstore-catalog.git'
       startPoint: main
       type: git
 components:
@@ -32,7 +32,7 @@ components:
     memoryLimit: 4Gi
     type: dockerimage
     alias: quarkus-tools
-    image: 'registry.redhat.io/codeready-workspaces/plugin-java8-rhel8@sha256:81548d8559fdc3ba3e2b1ec398f3bd94728e8e4037a4c3a180177f20c9704db9'
+    image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8'
     env:
       - value: /home/jboss/.m2
         name: MAVEN_CONFIG
