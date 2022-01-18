@@ -48,4 +48,4 @@ For example:
 
 ## Developer Workspace
 
-[![Contribute](https://raw.githubusercontent.com/blues-man/cloud-native-workshop/demo/factory-contribute.svg)](https://codeready-labs-infra.apps.cluster-zcfx9.zcfx9.sandbox1862.opentlc.com/factory?url=https://github.com/adnan-drina/coolstore-catalog&policies.create=peruser)
+[![Contribute](https://raw.githubusercontent.com/blues-man/cloud-native-workshop/demo/factory-contribute.svg)](https://codeready-openshift-workspaces.apps.cluster-gbrln.gbrln.sandbox1215.opentlc.com/factory?url=https://github.com/adnan-drina/coolstore-catalog&policies.create=peruser)
