@@ -16,9 +16,6 @@ FROM registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10
 
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 
-# Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
-ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-
 COPY target/*.jar /deployments/app.jar
 # COPY target/lib/* /deployments/lib/
 # COPY target/*-runner.jar /deployments/quarkus-run.jar
