@@ -12,25 +12,14 @@
 # ENTRYPOINT ["java","-jar","/app.jar"]
 #
 
-# FROM registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10
-#
-# ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
-#
-# COPY target/*.jar /deployments/app.jar
-# # COPY target/lib/* /deployments/lib/
-# # COPY target/*-runner.jar /deployments/quarkus-run.jar
-#
-# EXPOSE 8080
-# USER 185
-#
-# ENTRYPOINT [ "java", "-jar", "/deployments/app.jar" ]
+FROM registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10
 
-ARG JAR_FILE=target/*.jar
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 
-FROM registry.access.redhat.com/ubi8/openjdk-11
-COPY . .
-RUN mvn clean install -DskipTests
+COPY target/*.jar /deployments/app.jar
+COPY target/classes/* /deployments/classes/
 
-FROM registry.access.redhat.com/ubi8/openjdk-11
-COPY --from=0 /home/jboss/target/*.jar /home/jboss/app.jar
-ENTRYPOINT ["java","-jar","app.jar"]
+EXPOSE 8080
+USER 185
+
+ENTRYPOINT [ "java", "-Dspring.profiles.active=openshift", "-jar", "/deployments/app.jar" ]
