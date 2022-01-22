@@ -25,16 +25,12 @@
 #
 # ENTRYPOINT [ "java", "-jar", "/deployments/app.jar" ]
 
-FROM registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10 as builder
-WORKDIR application
 ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} application.jar
-RUN java -Djarmode=layertools -jar application.jar extract
 
-FROM registry.access.redhat.com/ubi8/openjdk-11-runtime:1.10
-WORKDIR application
-COPY --from=builder application/dependencies/ ./
-COPY --from=builder application/snapshot-dependencies/ ./
-COPY --from=builder application/spring-boot-loader/ ./
-COPY --from=builder application/application/ ./
-ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
+FROM registry.access.redhat.com/ubi8/openjdk-11
+COPY . .
+RUN mvn clean install -DskipTests
+
+FROM registry.access.redhat.com/ubi8/openjdk-11
+COPY --from=0 /home/jboss/target/*.jar /home/jboss/app.jar
+ENTRYPOINT ["java","-jar","app.jar"]
