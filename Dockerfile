@@ -23,4 +23,4 @@ COPY target/*.jar /deployments/app.jar
 EXPOSE 8080
 USER 185
 
-ENTRYPOINT [ "java", "-Dspring.profiles.active=openshift", "-jar", "/deployments/app.jar" ]
+ENTRYPOINT [ "java", "-jar", "/deployments/app.jar" ]
