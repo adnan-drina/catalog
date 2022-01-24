@@ -53,7 +53,7 @@ commands:
     actions:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
-        command: 'oc start-build catalog-springboot --from-file $CHE_PROJECTS_ROOT/coolstore-catalog/target/catalog-1.0.0-SNAPSHOT.jar --follow'
+        command: 'oc start-build catalog --from-file $CHE_PROJECTS_ROOT/coolstore-catalog/target/catalog-1.0.0-SNAPSHOT.jar --follow'
         component: quarkus-tools
   - name: Run Tests
     actions:
