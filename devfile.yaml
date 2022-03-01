@@ -34,6 +34,9 @@ components:
     type: dockerimage
     alias: quarkus-tools
     image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8'
+    volumes:
+    - name: m2
+      containerPath: /home/jboss/.m2
     env:
       - value: /home/jboss/.m2
         name: MAVEN_CONFIG
