@@ -7,7 +7,8 @@ metadata:
 projects:
   - name: coolstore-catalog
     source:
-      location: 'https://github.com/adnan-drina/coolstore-catalog.git'
+#      location: 'https://github.com/adnan-drina/coolstore-catalog.git'
+      location: 'git@github.com:adnan-drina/coolstore-catalog.git'
       startPoint: main
       type: git
 components:
