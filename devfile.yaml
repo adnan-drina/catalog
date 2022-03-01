@@ -22,14 +22,14 @@ components:
           public: 'true'
           discoverable: 'true'
         name: index-webpage
-        port: 8080
+        port: 8081
       - attributes:
           protocol: http
           public: 'true'
           discoverable: 'true'
-          path: /q/dev
-        name: quarkus-devui
-        port: 8080
+          path: /api/catalog
+        name: catalog-service
+        port: 8081
     memoryLimit: 4Gi
     type: dockerimage
     alias: quarkus-tools
@@ -42,10 +42,10 @@ components:
         name: MAVEN_CONFIG
       - value: '-Xmx4G -Xss128M -XX:MetaspaceSize=1G -XX:MaxMetaspaceSize=2G -XX:+CMSClassUnloadingEnabled'
         name: MAVEN_OPTS
-  - memoryLimit: 1500M
-    type: chePlugin
-    reference: 'https://raw.githubusercontent.com/redhat-cop/agnosticd/development/ansible/roles/ocp4-workload-ccnrd-cuttingedge/files/cheplugin-meta.yaml'
-    alias: mta-ide-plugin
+#  - memoryLimit: 1500M
+#    type: chePlugin
+#    reference: 'https://raw.githubusercontent.com/redhat-cop/agnosticd/development/ansible/roles/ocp4-workload-ccnrd-cuttingedge/files/cheplugin-meta.yaml'
+#    alias: mta-ide-plugin
 commands:
   - name: Login to OpenShift
     actions:
@@ -64,6 +64,12 @@ commands:
       - workdir: '${CHE_PROJECTS_ROOT}'
         type: exec
         command: 'mvn verify -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
+        component: quarkus-tools
+  - name: Run App
+    actions:
+      - workdir: '${CHE_PROJECTS_ROOT}'
+        type: exec
+        command: 'mvn spring-boot:run -f ${CHE_PROJECTS_ROOT}/coolstore-catalog'
         component: quarkus-tools
   - name: Package App (JVM)
     actions:
