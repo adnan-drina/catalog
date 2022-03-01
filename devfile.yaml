@@ -1,8 +1,9 @@
 apiVersion: 1.0.0
 metadata:
-  generateName: coolstore-catalog-
-attributes:
-  persistVolumes: 'false'
+  name: coolstore-catalog
+#  generateName: coolstore-catalog-
+#attributes:
+#  persistVolumes: 'false'
 projects:
   - name: coolstore-catalog
     source:
