@@ -27,8 +27,15 @@ components:
           protocol: http
           public: 'true'
           discoverable: 'true'
-          path: /api/catalog
-        name: catalog-service
+          path: /services/products
+        name: get-all-products
+        port: 8081
+      - attributes:
+          protocol: http
+          public: 'true'
+          discoverable: 'true'
+          path: /services/product/329299
+        name: get-product-by-id
         port: 8081
     memoryLimit: 4Gi
     type: dockerimage
