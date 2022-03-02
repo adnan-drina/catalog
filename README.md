@@ -49,3 +49,5 @@ For example:
 ## Developer Workspace
 
 [![Contribute](https://raw.githubusercontent.com/blues-man/cloud-native-workshop/demo/factory-contribute.svg)](https://codeready-codeready-workspaces.apps.cluster-wp8mr.wp8mr.sandbox668.opentlc.com/factory?url=https://github.com/adnan-drina/coolstore-catalog&policies.create=peruser)
+
+CRW Test
