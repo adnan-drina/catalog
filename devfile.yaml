@@ -38,7 +38,8 @@ components:
           path: /services/product/329299
         name: get-product-by-id
         port: 8081
-    memoryLimit: 4Gi
+#    memoryLimit: 4Gi
+    memoryLimit: 512Mi
     type: dockerimage
     alias: quarkus-tools
     image: 'registry.redhat.io/codeready-workspaces/plugin-java11-rhel8'
