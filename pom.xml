@@ -35,6 +35,7 @@
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
 		<spring-boot-maven-plugin.version>2.4.9</spring-boot-maven-plugin.version>
 		<sonar.java.binaries>target</sonar.java.binaries>
+		<sonar.java.test.binaries>src/test</sonar.java.test.binaries>
 	</properties>
 
 	<dependencyManagement>
